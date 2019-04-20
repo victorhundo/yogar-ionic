@@ -4,7 +4,7 @@
 
 O Yogar vem com o intuito de ajudar brasileiros com faixa etária a partir de 14 anos  que não possuem tempo ou condições de se deslocar para realizar atividades físicas em escolas ou academias, e que tenham interesse no estilo de vida que a filosofia do Yoga proporciona.
 
-##Dependências 
+## Dependências 
 1 – Instalar o Node.js
 ```
 sudo apt-get install python-software-properties
