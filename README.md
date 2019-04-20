@@ -22,6 +22,9 @@ sudo npm install -g cordova
 sudo npm install -g ionic
 ```
 
+## Dependências 
+ Para executar o ionic, entrar na pasta yogar/ e fazer:
 
-
-
+```
+ionic serve
+```
