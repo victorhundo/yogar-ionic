@@ -29,6 +29,9 @@ O Yogar vem com o intuito de ajudar brasileiros com faixa etária a partir de 14
   ionic serve
   ```
 
+```
+ionic serve
+```
 ## Criando Plataforma Android
 
 Para criar:
