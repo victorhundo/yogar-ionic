@@ -28,3 +28,36 @@ sudo npm install -g ionic
 ```
 ionic serve
 ```
+## Criando Plataforma Android
+
+Para criar:
+
+  ```
+  ionic cordova platform add android
+
+  ```
+
+
+Buildando o android
+ versao debug
+
+ ```
+ ionic cordova build android
+ ```
+
+ versao normal mais rapida
+  ```
+  ionic cordova build android --prod
+  ```
+  executar applicativo
+  ```
+  ionic cordova run android
+  ```
+
+## Dependências Android
+
+1 -Install Android SDK
+  ```
+  sudo apt-get install android-sdk
+  ```
+
