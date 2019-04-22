@@ -1,0 +1,10 @@
+version: '3'
+services:
+  api:
+    build: ./docker/
+    image: yogar-ionic
+    container_name: yogar-ionic
+    ports:
+      - "3002:8100"
+    volumes:
+      - ./:/app
