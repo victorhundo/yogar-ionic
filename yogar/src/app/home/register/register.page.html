@@ -44,12 +44,12 @@
                   <input type="password" class="form-control" id="password" value=""[(ngModel)]="password"  placeholder="Informe a senha do usuário"
                        maxlength="20" >
                 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                <label for="senhaaux">Confirmar Senha*</label>
-                <input type="passwordaux" class="form-control" id="passwordaux" placeholder="Informe novamente a senha do usuário"
-                     maxlength="20" required>
-              <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                <p class="help-block">ADICIONAR MENSAGEM DE VALIDAÇÃO DE SENHA</p>
-            </div>
+                </div>
+              <div class="form-group has-feedback">
+                  <label for="senhaaux">Confirmar Senha*</label>
+                  <input type="password" class="form-control" id="passwordaux" value=""[(ngModel)]="passwordaux"  placeholder="Informe Novamente a senha do usuário"
+                       maxlength="20" >
+                 </div>
             <button type="submit" class="btn btn-primary" (click)="add()">Registrar</button>
             <button type="submit" class="btn btn-danger" href="go('../home/home.module#Tab2PageModule')">Voltar</button>
             <button class="btn btn-success" href="go('../home/home.module#Tab2PageModule')">Cadastra-se</button>
