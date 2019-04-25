@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { AlunoPage } from './aluno.page';
 
+import {MatButtonModule} from '@angular/material/button';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +21,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MatButtonModule
   ],
   declarations: [AlunoPage]
 })

@@ -1,6 +1,5 @@
 <ion-header>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <ion-toolbar>
+   <ion-toolbar>
     <ion-title>Yogar</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -26,6 +25,7 @@
       <label>Senha</label>
       <input type="password" class="form-control"  placeholder="Password" value="" [(ngModel)]="senha">
     </div>
-  <button type="submit" class="btn btn-primary" (click)="criaAluno()">Submit</button>
+  <button mat-raised-button type="submit" (click)="criaAluno()">Submit</button>
+
 
 </ion-content>
