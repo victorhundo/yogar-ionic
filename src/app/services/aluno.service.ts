@@ -18,4 +18,7 @@ export class AlunoService {
   postAlunos(data): Observable<any> {
 	  return this.http.post('http://localhost:3000/alunos', data);
   }
+  logarAluno(data2): Observable<any>{
+    return this.http.post('http://localhost:3000/auth/login', data2);
+  }
 }
