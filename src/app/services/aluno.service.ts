@@ -8,17 +8,17 @@ import { map } from 'rxjs/operators';
 })
 
 export class AlunoService {
-  url = "http://localhost:3000"
+  url = "http://api.yogar.splab.ufcg.edu.br"
   constructor(private http:HttpClient) { }
 
   getAlunos(): Observable<any> {
-    return this.http.get('http://localhost:3000/alunos');
+    return this.http.get('http://api.yogar.splab.ufcg.edu.br/alunos');
   }
 
   postAlunos(data): Observable<any> {
-	  return this.http.post('http://localhost:3000/alunos', data);
+	  return this.http.post('http://api.yogar.splab.ufcg.edu.br/alunos', data);
   }
   logarAluno(data2): Observable<any>{
-    return this.http.post('http://localhost:3000/auth/login', data2);
+    return this.http.post('http://api.yogar.splab.ufcg.edu.br/auth/login', data2);
   }
 }
