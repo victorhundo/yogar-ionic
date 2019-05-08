@@ -18,7 +18,13 @@ export class LogarPage implements OnInit {
   constructor(private alunoService: AlunoService, private router: Router) { }
 
   ngOnInit() {
+      var aluno = JSON.parse(localStorage.getItem('login'));
+      if (aluno != null && aluno.type == 'aluno'){
+        this.router.navigate(['t']);
+      }
   }
+
+
   logar(){
       var model2 =  {username:this.username,
        senha:this.senha}
@@ -26,8 +32,9 @@ export class LogarPage implements OnInit {
       this.results = this.alunoService.logarAluno(model2);
       this.results.subscribe( res => {
         if(res.type == 'aluno'){
+          console.log(res.type)
           localStorage.setItem('login',JSON.stringify(res));
-          this.router.navigate([''])
+          this.router.navigate(['t'])
         }
       })
     }
