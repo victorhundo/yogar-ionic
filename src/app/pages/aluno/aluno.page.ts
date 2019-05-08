@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlunoService } from './../../services/aluno.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aluno',
@@ -15,7 +16,7 @@ export class AlunoPage implements OnInit {
   username: any;
   senha: any;
 
-  constructor(private alunoService: AlunoService) { }
+  constructor(private alunoService: AlunoService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -41,6 +42,9 @@ export class AlunoPage implements OnInit {
     this.results = this.alunoService.postAlunos(model);
     this.results.subscribe( res => {
       console.log(res);
+     if (res.insertId != null){
+        this.router.navigate(['logar']);
+      }
     })
   }
 
