@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlunoService } from './../../services/aluno.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class LogarPage implements OnInit {
    username: any;
    senha: any;
 
-  constructor(private alunoService: AlunoService) { }
+  constructor(private alunoService: AlunoService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,7 +25,10 @@ export class LogarPage implements OnInit {
 
       this.results = this.alunoService.logarAluno(model2);
       this.results.subscribe( res => {
-        console.log(res);
+        if(res.type == 'aluno'){
+          localStorage.setItem('login',JSON.stringify(res));
+          this.router.navigate([''])
+        }
       })
     }
 

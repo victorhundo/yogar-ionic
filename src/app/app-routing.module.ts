@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'logar', pathMatch:'full' },
+  { path: '', redirectTo: 't/tabs', pathMatch:'full' },
   {path: 't',  redirectTo: 't/tabs', pathMatch:'full' },
   { path: 'aluno', loadChildren: './pages/aluno/aluno.module#AlunoPageModule' },
   { path: 'logar', loadChildren: './pages/logar/logar.module#LogarPageModule' },
