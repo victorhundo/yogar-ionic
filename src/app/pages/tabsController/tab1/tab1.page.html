@@ -7,34 +7,14 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-      <ion-img src="https://3c1703fe8d.site.internapcdn.net/newman/csz/news/800/2019/ahanewsisyog.jpg"></ion-img>
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+      <div *ngFor="let post of posts">
+        <ion-card class="welcome-card">
+        <ion-img src="{{post.img}}"></ion-img>
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-card-title>{{post.titulo}}</ion-card-title>
+        <ion-card-content>
+        <p>{{post.texto}}</p>
       </ion-card-content>
-    </ion-card>
-    <ion-card class="welcome-card">
-      <ion-img src="https://globalvoices.org/wp-content/uploads/2019/04/yoga-ban-russia-fakenews-800x533.jpg"></ion-img>
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-card class="welcome-card">
-      <ion-img src="http://cdn.24.co.za/files/Cms/General/d/8401/9d7677620d14446ca0fb482ea423a054.jpg"></ion-img>
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
+      </ion-card>
+      </div>
 </ion-content>

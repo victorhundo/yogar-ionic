@@ -21,4 +21,7 @@ export class AlunoService {
   logarAluno(data2): Observable<any>{
     return this.http.post('http://api.yogar.splab.ufcg.edu.br/auth/login', data2);
   }
+  getPosts(): Observable<any> {
+	  return this.http.get('http://api.yogar.splab.ufcg.edu.br/posts');
+  }
 }
