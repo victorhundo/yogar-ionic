@@ -1,18 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Yogar</ion-title>
-  </ion-toolbar>
-</ion-header>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Yogar</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<ion-content>
-  <div class="form-group">
-    <label>Username</label>
-    <input type="text" class="form-control"  placeholder="Nome do Usuario"  value="" [(ngModel)]="username">
-  </div>
-  <div class="form-group">
-    <label>Senha</label>
-    <input type="password" class="form-control"  placeholder="Senha" value="" [(ngModel)]="senha">
-  </div>
-  <button mat-raised-button type="submit" (click)="logar()">Logar</button>
-    <button mat-raised-button routerLink="/aluno">Registrar</button>
-</ion-content>
+<mat-grid-list cols="8" rowHeight="100%">
+  <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows">
+    <div *ngIf="tile.cols > 1">
+      <img mat-card-image src="http://yogar.splab.ufcg.edu.br/_static/yogar.png" alt="Photo of a Shiba Inu">
+      <mat-card class="example-card">
+        <mat-card-content>
+          <div class="example-container">
+          <mat-form-field>
+            <input matInput placeholder="Nome do Usuario" value="" [(ngModel)]="username">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="password" placeholder="Senha" value="" [(ngModel)]="senha">
+          </mat-form-field>
+        </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit" (click)="logar()">Logar</button>
+          <button mat-raised-button color="primary" routerLink="/aluno">Registrar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

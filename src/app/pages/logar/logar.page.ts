@@ -24,6 +24,11 @@ export class LogarPage implements OnInit {
       }
   }
 
+  tiles: Tile[] = [
+    {text: 'One', cols: 1, rows: 1, color: 'lightblue'},
+    {text: 'Two', cols: 6, rows: 1, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+  ];
 
   logar(){
       var model2 =  {username:this.username,

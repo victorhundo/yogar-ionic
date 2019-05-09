@@ -7,7 +7,12 @@ import { IonicModule } from '@ionic/angular';
 
 import { AlunoPage } from './aluno.page';
 
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
 
 const routes: Routes = [
   {
@@ -22,7 +27,12 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    MatButtonModule
+    MatFormFieldModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatGridListModule,
+    MatCardModule,
+    MatInputModule
   ],
   declarations: [AlunoPage]
 })

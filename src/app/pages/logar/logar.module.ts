@@ -6,6 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
 
 import { LogarPage } from './logar.page';
 
@@ -23,7 +27,11 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     MatFormFieldModule ,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatGridListModule,
+    MatCardModule,
+    MatInputModule
   ],
   declarations: [LogarPage]
 })

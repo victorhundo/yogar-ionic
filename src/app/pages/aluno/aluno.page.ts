@@ -21,6 +21,12 @@ export class AlunoPage implements OnInit {
   ngOnInit() {
   }
 
+  tiles: Tile[] = [
+    {text: 'One', cols: 1, rows: 1, color: 'lightblue'},
+    {text: 'Two', cols: 6, rows: 1, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+  ];
+  
   criaAluno(){
     var model = {
       "nome":{

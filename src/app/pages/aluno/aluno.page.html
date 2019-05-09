@@ -1,32 +1,42 @@
-<ion-header>
-   <ion-toolbar>
-    <ion-title>Yogar</ion-title>
-  </ion-toolbar>
-</ion-header>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Yogar</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<ion-content>
-    <div class="form-group">
-      <label>Primeiro Nome</label>
-      <input type="text" class="form-control"  placeholder="Primeiro Nome" [(ngModel)]="primeiroNome">
-    </div>
-    <div class="form-group">
-      <label>Ultimo Nome</label>
-      <input type="text" class="form-control"  placeholder="Ultimo Nome" value="" [(ngModel)]="ultimoNome">
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" class="form-control" placeholder="Enter email" value="" [(ngModel)]="email">
-    </div>
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control"  placeholder="Username"  value="" [(ngModel)]="username">
-    </div>
-    <div class="form-group">
-      <label>Senha</label>
-      <input type="password" class="form-control"  placeholder="Password" value="" [(ngModel)]="senha">
-    </div>
-  <button mat-raised-button type="submit" (click)="criaAluno()">Submit</button>
-  <button mat-raised-button routerLink="/logar">Voltar</button>
+<mat-grid-list cols="8" rowHeight="100%">
+  <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows">
+    <div *ngIf="tile.cols > 1">
+      <img mat-card-image src="http://yogar.splab.ufcg.edu.br/_static/yogar.png" alt="Photo of a Shiba Inu">
+      <mat-card class="example-card">
+        <mat-card-content>
+          <div class="example-container">
+          <mat-form-field>
+            <input matInput type="text" class="form-control"  placeholder="Primeiro Nome" [(ngModel)]="primeiroNome">
+          </mat-form-field>
 
+          <mat-form-field>
+            <input matInput type="text" class="form-control"  placeholder="Ultimo Nome" value="" [(ngModel)]="ultimoNome">
+          </mat-form-field>
 
-</ion-content>
+          <mat-form-field>
+            <input matInput type="email" class="form-control" placeholder="Enter email" value="" [(ngModel)]="email">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="text" class="form-control"  placeholder="Username"  value="" [(ngModel)]="username">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="password" class="form-control"  placeholder="Password" value="" [(ngModel)]="senha">
+          </mat-form-field>
+        </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit" (click)="criaAluno()">Submit</button>
+          <button mat-raised-button color="primary" routerLink="/logar">Voltar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list> 
