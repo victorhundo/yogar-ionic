@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  deploy:
+    machine: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "c5:0d:a4:e3:b8:96:4a:42:68:ed:72:60:33:b5:84:2d"
+      - run:
+          name: Deployment
+          command: |
+            ssh -oStrictHostKeyChecking=no vhugo@csi.splab.ufcg.edu.br /opt/yogar/yogar-ionic-prod/run.sh
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
