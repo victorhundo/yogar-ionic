@@ -6,4 +6,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<mat-card class="example-card" *ngFor="let video of videos">
+  <mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          <div mat-card-avatar class="example-header-image"></div>
+                  Yogar Lição {{video}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-video title="Yogar Lição {{video}}" [autoplay]="false" [preload]="true"
+    [fullscreen]="true" [download]="false" color="accent" spinner="spin" poster="http://yogar.splab.ufcg.edu.br/_static/yogar.png">
+        <source matVideoSource src="../assets/video/yogar.mp4" type="video/mp4">
+        <track matVideoTrack src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+        <track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">
+    </mat-video>
+  </mat-expansion-panel>
+</mat-accordion>
+</mat-card>
+
+<ion-content>
+
+</ion-content>
