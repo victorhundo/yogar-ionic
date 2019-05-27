@@ -24,4 +24,8 @@ export class AlunoService {
   getPosts(): Observable<any> {
 	  return this.http.get('http://api.yogar.splab.ufcg.edu.br/posts');
   }
+  public getToken(): any {
+  return localStorage.getItem('token');
+}
+
 }

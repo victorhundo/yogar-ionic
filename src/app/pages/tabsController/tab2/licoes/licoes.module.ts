@@ -1,27 +1,35 @@
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab2Page } from './tab2.page';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routes, RouterModule } from '@angular/router';
 import { MatVideoModule } from 'mat-video';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 
 
+import { IonicModule } from '@ionic/angular';
+
+import { LicoesPage } from './licoes.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: LicoesPage
+  }
+];
+
 @NgModule({
   imports: [
-    MatButtonModule,
-    MatExpansionModule,
     MatCardModule,
     MatVideoModule,
-    IonicModule,
+    MatExpansionModule,
+    MatButtonModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: Tab2Page }])
+    IonicModule,
+    RouterModule.forChild(routes)
   ],
-  declarations: [Tab2Page]
+  declarations: [LicoesPage]
 })
-export class Tab2PageModule {}
+export class LicoesPageModule {}

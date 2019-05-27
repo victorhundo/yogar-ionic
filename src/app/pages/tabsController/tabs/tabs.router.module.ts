@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: '../tab2/tab2.module#Tab2PageModule'
       },
       {
+      path: 'licoes',
+      loadChildren: '../tab2/licoes/licoes.module#LicoesPageModule'
+      },
+      {
         path: 'tab3',
         loadChildren: '../tab3/tab3.module#Tab3PageModule'
       },
