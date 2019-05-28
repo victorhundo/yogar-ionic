@@ -8,6 +8,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 
 
+
 import { IonicModule } from '@ionic/angular';
 
 import { LicoesPage } from './licoes.page';
@@ -32,4 +33,5 @@ const routes: Routes = [
   ],
   declarations: [LicoesPage]
 })
-export class LicoesPageModule {}
+export class LicoesPageModule {
+}

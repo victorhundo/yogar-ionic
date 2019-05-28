@@ -5,8 +5,7 @@ import { Component} from '@angular/core';
   templateUrl: './licoes.page.html',
   styleUrls: ['./licoes.page.scss'],
 })
-export class LicoesPage {
-
-  constructor() { }
+export class LicoesPage{
+    constructor() { }
 
 }
