@@ -8,9 +8,9 @@ import { AlunoService } from './../../../services/aluno.service';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page implements OnInit {
-  results: Observable<any>;
+  results: any;
   primeiroNome: string;
-  PrimeiroNomeDisabled: object;
+  primeiroNomeDisabled: object;
   ultimoNome: string;
   ultimoNomeDisabled: object;
   email: string;
@@ -43,8 +43,6 @@ export class Tab3Page implements OnInit {
     {text: 'Two', cols: 6, rows: 1, color: 'lightgreen'},
     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
   ];
-
-  primeiroNome = JSON.parse(localStorage.getItem('login')).user.primeiroNome;
 
   logout() {
     localStorage.clear();
