@@ -16,6 +16,10 @@ export class AlunoService {
     return this.http.get(`${API}/alunos`);
   }
 
+  putAlunos(uuid, obj): Observable<any> {
+    return this.http.put(`${API}/alunos/${uuid}`, obj);
+  }
+
   postAlunos(data): Observable<any> {
 	  return this.http.post(`${API}/alunos`, data);
   }
@@ -25,6 +29,8 @@ export class AlunoService {
   getPosts(): Observable<any> {
 	  return this.http.get(`${API}/posts`);
   }
+
+
 
   public getToken(): any {
     var login = JSON.parse(localStorage.getItem("login"));

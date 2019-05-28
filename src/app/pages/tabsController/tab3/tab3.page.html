@@ -1,12 +1,43 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      {{primeiroNome}}
+      Perfil
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div>
 
-<button mat-raised-button (click)="logout()">Logout</button>
+    <h1> Olá {{primeiroNome}} <button mat-raised-button  color="primary" (click)="logout()">Logout</button> </h1> 
+  </div>
+<mat-form-field>
+  <input matInput type="text"  [disabled]="primeiroNomeDisabled.isDisable" class="form-control"  placeholder="Primeiro Nome" [(ngModel)]="primeiroNome">
+</mat-form-field>
+<button mat-icon-button (click)="enablePrimeiroNome()"><mat-icon>{{primeiroNomeDisabled.icon}}</mat-icon></button>
+<button mat-raised-button color="primary" [disabled]="primeiroNomeDisabled.isDisable" (click)="atualizaPrimeiroNome()">Atualizar</button>
+
+<mat-form-field>
+  <input matInput type="text" [disabled]="ultimoNomeDisabled.isDisable" class="form-control"  placeholder="Ultimo Nome" value="" [(ngModel)]="ultimoNome">
+</mat-form-field>
+<button mat-icon-button (click)="enableUltimoNome()"><mat-icon>{{ultimoNomeDisabled.icon}}</mat-icon></button>
+<button mat-raised-button color="primary" [disabled]="ultimoNomeDisabled.isDisable" (click)="atualizaUltimoNome()">Atualizar</button>
+
+<mat-form-field>
+  <input matInput type="email" [disabled]="emailDisabled.isDisable" class="form-control" placeholder="Enter email" value="" [(ngModel)]="email">
+</mat-form-field>
+<button mat-icon-button (click)="enableEmail()"><mat-icon>{{emailDisabled.icon}}</mat-icon></button>
+<button mat-raised-button color="primary" [disabled]="emailDisabled.isDisable" (click)="atualizaEmail()">Atualizar</button>
+
+<mat-form-field>
+  <input matInput type="text" [disabled]="usernameDisabled.isDisable" class="form-control"  placeholder="Username"  value="" [(ngModel)]="username">
+</mat-form-field>
+<button mat-icon-button (click)="enableUsername()"><mat-icon>{{usernameDisabled.icon}}</mat-icon></button>
+<button mat-raised-button color="primary" [disabled]="usernameDisabled.isDisable" (click)="atualizaUsername()">Atualizar</button>
+
+<mat-form-field>
+  <input matInput type="password" [disabled]="senhaDisabled.isDisable" class="form-control"  placeholder="Password" value="" [(ngModel)]="senha">
+</mat-form-field>
+<button mat-icon-button (click)="enableSenha()"><mat-icon>{{senhaDisabled.icon}}</mat-icon></button>
+<button mat-raised-button color="primary" [disabled]="senhaDisabled.isDisable" (click)="atualizaSenha()">Atualizar</button>
 </ion-content>
