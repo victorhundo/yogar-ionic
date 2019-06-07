@@ -7,11 +7,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { IonicModule } from '@ionic/angular';
 
 import { LicoesPage } from './licoes.page';
+import { Dialog } from './licoes.page';
 
 const routes: Routes = [
   {
@@ -30,9 +32,11 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     MatGridListModule,
+    MatDialogModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LicoesPage]
+  declarations: [LicoesPage, Dialog],
+  entryComponents: [Dialog],
 })
 export class LicoesPageModule {
 }
