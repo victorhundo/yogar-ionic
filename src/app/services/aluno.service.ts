@@ -23,11 +23,17 @@ export class AlunoService {
   postAlunos(data): Observable<any> {
 	  return this.http.post(`${API}/alunos`, data);
   }
+
   logarAluno(data2): Observable<any>{
     return this.http.post(`${API}/auth/login`, data2);
   }
+
   getPosts(): Observable<any> {
 	  return this.http.get(`${API}/posts`);
+  }
+
+  getLicoes(): Observable<any> {
+	  return this.http.get(`${API}/licoes`);
   }
 
 
@@ -38,6 +44,14 @@ export class AlunoService {
       return login;
     else
       return login.token;
+  }
+
+  public getLicoesStorage(): any {
+    var licoes = JSON.parse(localStorage.getItem("licoes"));
+    if (licoes == null)
+      return licoes;
+    else
+      return licoes;
   }
 
 }

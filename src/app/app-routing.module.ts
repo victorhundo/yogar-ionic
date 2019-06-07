@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'aluno', loadChildren: './pages/aluno/aluno.module#AlunoPageModule' },
   { path: 'logar', loadChildren: './pages/logar/logar.module#LogarPageModule' },
   { path: 't', loadChildren: './pages/tabsController/tabs/tabs.module#TabsPageModule' },
-  { path: 'licoes', loadChildren: './pages/tabsController/tab2/licoes/licoes.module#LicoesPageModule' },
+  { path: 'licoes/:id', loadChildren: './pages/tabsController/tab2/licoes/licoes.module#LicoesPageModule' },
 ];
 @NgModule({
   imports: [

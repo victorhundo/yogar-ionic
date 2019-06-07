@@ -9,6 +9,9 @@ import { MatVideoModule } from 'mat-video';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 @NgModule({
@@ -20,6 +23,8 @@ import {MatButtonModule} from '@angular/material/button';
     IonicModule,
     CommonModule,
     FormsModule,
+    MatListModule,
+    MatDividerModule,
     RouterModule.forChild([{ path: '', component: Tab2Page }])
   ],
   declarations: [Tab2Page]

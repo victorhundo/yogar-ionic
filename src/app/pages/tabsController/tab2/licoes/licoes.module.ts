@@ -6,7 +6,7 @@ import { MatVideoModule } from 'mat-video';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 import { IonicModule } from '@ionic/angular';
@@ -29,6 +29,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    MatGridListModule,
     RouterModule.forChild(routes)
   ],
   declarations: [LicoesPage]
