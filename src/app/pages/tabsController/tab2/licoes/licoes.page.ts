@@ -77,23 +77,33 @@ export class Dialog {
   @Inject(MAT_DIALOG_DATA) public data: DialogData,
           private camera: Camera) {}
 
-  fotoDesafio:any;
+  fotoDesafioPost:any;
+  fotoDesafioView:any;
 
-  options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.FILE_URI,
-    encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE
-  };
+  tirarFoto() {
 
-  tirarFoto(){
-    this.camera.getPicture(this.options).then((imageData) => {
-      this.fotoDesafio = imageData;
-    }, (err) => {
-      console.log(err);
-    });
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetWidth: 100,
+      targetHeight: 100
+    }
+
+    this.camera.getPicture(options)
+      .then((imageData) => {
+        this.fotoDesafioPost = imageData;
+        let base64image = 'data:image/jpeg;base64,' + imageData;
+        this.fotoDesafioView= base64image;
+
+      }, (error) => {
+        console.error(error);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
   }
-
   onNoClick(): void {
     this.dialogRef.close();
   }

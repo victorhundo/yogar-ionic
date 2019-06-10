@@ -1,8 +1,9 @@
 <h1 mat-dialog-title>Desafio!</h1>
 <p>Tire a foto do desafio dessa lição para ganhar pontos extras!</p>
 <div mat-dialog-content>
-  <p>{{fotoDesafio}}</p>
-  <p align="center"><img [src]="fotoDesafio"></p>
+  <p>{{fotoDesafioPost}}</p>
+  <p>{{fotoDesafioView}}</p>
+  <p align="center"><img src="{{fotoDesafioView}}"></p>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Fechar</button>
