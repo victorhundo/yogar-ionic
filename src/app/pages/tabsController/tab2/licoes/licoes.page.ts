@@ -1,4 +1,4 @@
-import { Component ,OnInit, Inject} from '@angular/core';
+import { Component ,OnInit, Inject, ViewChild} from '@angular/core';
 import { AlunoService } from '../../../../services/aluno.service';
 import { Observable } from 'rxjs';
 import { API } from 'src/app/API';
@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 export interface DialogData {
   animal: string;
@@ -24,6 +25,9 @@ export class LicoesPage implements OnInit{
               private router: Router,
               public dialog: MatDialog) {}
 
+   @ViewChild('video') matVideo: any;
+
+
   results: Observable<any>;
   licoes: any;
   licao: any;
@@ -31,6 +35,7 @@ export class LicoesPage implements OnInit{
   id: any;
   animal: string;
   name: string;
+  video: HTMLVideoElement;
 
 
 
@@ -43,8 +48,27 @@ export class LicoesPage implements OnInit{
     });
     this.licao = this.licoes[0];
     this.API_URL_VIDEO = `${API}/professores/${this.licao.uuidProfessor}/licoes/${this.id}/video`
+
+    this.video = this.matVideo.getVideoTag();
+    this.video.addEventListener('ended', () => this.openDialogXp());
   }
 
+  openDialogXp(): void {
+    const dialogRef = this.dialog.open(DialogXp, {
+      width: '95%',
+      data: this.licao
+    });
+
+    this.results = this.alunoService.adicionaxp({valor: 100});
+    this.results.subscribe( res => {
+      console.log(res);
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
 
 
   openDialog(): void {
@@ -107,4 +131,22 @@ export class Dialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
+}
+
+
+@Component({
+  selector: 'dialog-xp',
+  templateUrl: 'dialog-xp.html',
+  styleUrls: ['./licoes.page.scss'],
+})
+export class DialogXp {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogXp>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

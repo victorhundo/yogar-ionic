@@ -36,6 +36,12 @@ export class AlunoService {
 	  return this.http.get(`${API}/licoes`);
   }
 
+  adicionaxp(xp): Observable<any> {
+    var uuid = this.getUuid();
+    console.log(`${API}/alunos/${uuid}/xp`)
+    return this.http.post(`${API}/alunos/${uuid}/xp`, xp);
+  }
+
 
 
   public getToken(): any {
@@ -44,6 +50,14 @@ export class AlunoService {
       return login;
     else
       return login.token;
+  }
+
+  getUuid(): any {
+    var login = JSON.parse(localStorage.getItem("login"));
+    if (login == null)
+      return login;
+    else
+      return login.user.uuid;
   }
 
   public getLicoesStorage(): any {

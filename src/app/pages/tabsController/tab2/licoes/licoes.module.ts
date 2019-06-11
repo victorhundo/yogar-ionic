@@ -14,6 +14,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { LicoesPage } from './licoes.page';
 import { Dialog } from './licoes.page';
+import { DialogXp } from './licoes.page';
 
 const routes: Routes = [
   {
@@ -35,8 +36,8 @@ const routes: Routes = [
     MatDialogModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LicoesPage, Dialog],
-  entryComponents: [Dialog],
+  declarations: [LicoesPage, Dialog, DialogXp],
+  entryComponents: [Dialog, DialogXp],
 })
 export class LicoesPageModule {
 }
