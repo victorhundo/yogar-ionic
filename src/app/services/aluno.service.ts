@@ -60,6 +60,14 @@ export class AlunoService {
       return login.user.uuid;
   }
 
+  public getLogin(): any {
+    return JSON.parse(localStorage.getItem("login"));
+  }
+
+  public setLogin(newLogin): any {
+    localStorage.setItem('login',JSON.stringify(newLogin));
+  }
+
   public getLicoesStorage(): any {
     var licoes = JSON.parse(localStorage.getItem("licoes"));
     if (licoes == null)
@@ -67,5 +75,7 @@ export class AlunoService {
     else
       return licoes;
   }
+
+
 
 }

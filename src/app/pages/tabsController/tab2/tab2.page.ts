@@ -2,6 +2,7 @@ import { Component ,OnInit} from '@angular/core';
 import { AlunoService } from '../../../services/aluno.service';
 import { Observable } from 'rxjs';
 import { API } from 'src/app/API';
+import { Router, ActivatedRoute, ParamMap, Event, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -16,7 +17,16 @@ export class Tab2Page implements OnInit{
   API_URL_IMG: string;
   aluno: any;
 
-  constructor(private alunoService: AlunoService) {}
+  constructor(private alunoService: AlunoService, private router: Router,) {
+    router.events.subscribe((val:Event) => {
+      if(val instanceof NavigationEnd ){
+        if (val.url == "/t/tabs/tab2"){
+          console.log(val)
+          this.ngOnInit();
+        }
+      }
+    });
+  }
 
   ngOnInit() {
     this.aluno = JSON.parse(localStorage.getItem('login')).user;

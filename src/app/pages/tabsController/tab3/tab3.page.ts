@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Event, NavigationEnd } from '@angular/router';
 import { AlunoService } from './../../../services/aluno.service';
 
 @Component({
@@ -20,9 +20,23 @@ export class Tab3Page implements OnInit {
   senha: string;
   senhaDisabled: object;
   uuid: string;
+  xp: number;
+
+  constructor(private alunoService: AlunoService, private router: Router) {
+    router.events.subscribe((val:Event) => {
+      if(val instanceof NavigationEnd ){
+        if (val.url == "/t/tabs/tab3"){
+          console.log(val)
+          this.ngOnInit();
+        }
+      }
+    });
+  }
 
   ngOnInit() {
     var user = JSON.parse(localStorage.getItem('login')).user
+    this.xp = (user.xp/100);
+    if (this.xp == 0) this.xp = 1;
     this.uuid = user.uuid;
     this.primeiroNome = user.primeiroNome;
     this.primeiroNomeDisabled = {isDisable: true, icon: 'lock_close'};
@@ -36,7 +50,7 @@ export class Tab3Page implements OnInit {
     this.senhaDisabled = {isDisable: true, icon: 'lock_close'};
   }
 
-  constructor(private alunoService: AlunoService, private router: Router) { }
+
 
   tiles: { text: string, cols: number, rows: number, color: string }[] = [
     {text: 'One', cols: 1, rows: 1, color: 'lightblue'},

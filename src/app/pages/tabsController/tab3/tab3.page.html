@@ -7,37 +7,71 @@
 </ion-header>
 
 <ion-content>
-  <div>
+  <mat-grid-list cols="8" rowHeight="1:1">
+  <mat-grid-tile [colspan]="6" >
+    <p> Olá, {{primeiroNome}} {{ultimoNome}}</p>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" >
+    <button mat-raised-button  color="primary" (click)="logout()">Logout</button>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="8" >
+    <p> Você está no Nv. {{xp}}</p>
+    </mat-grid-tile>
+</mat-grid-list>
 
-    <h1> Olá {{primeiroNome}} <button mat-raised-button  color="primary" (click)="logout()">Logout</button> </h1> 
-  </div>
-<mat-form-field>
-  <input matInput type="text"  [disabled]="primeiroNomeDisabled.isDisable" class="form-control"  placeholder="Primeiro Nome" [(ngModel)]="primeiroNome">
-</mat-form-field>
-<button mat-icon-button (click)="enablePrimeiroNome()"><mat-icon>{{primeiroNomeDisabled.icon}}</mat-icon></button>
-<button mat-raised-button color="primary" [disabled]="primeiroNomeDisabled.isDisable" (click)="atualizaPrimeiroNome()">Atualizar</button>
+<mat-grid-list cols="1" rowHeight="5:1">
 
-<mat-form-field>
-  <input matInput type="text" [disabled]="ultimoNomeDisabled.isDisable" class="form-control"  placeholder="Ultimo Nome" value="" [(ngModel)]="ultimoNome">
-</mat-form-field>
-<button mat-icon-button (click)="enableUltimoNome()"><mat-icon>{{ultimoNomeDisabled.icon}}</mat-icon></button>
-<button mat-raised-button color="primary" [disabled]="ultimoNomeDisabled.isDisable" (click)="atualizaUltimoNome()">Atualizar</button>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput type="text"  [disabled]="primeiroNomeDisabled.isDisable" class="form-control"  placeholder="Primeiro Nome" [(ngModel)]="primeiroNome">
+    </mat-form-field>
+    <button mat-icon-button (click)="enablePrimeiroNome()"><mat-icon>{{primeiroNomeDisabled.icon}}</mat-icon></button>
+    <button mat-raised-button color="primary" [disabled]="primeiroNomeDisabled.isDisable" (click)="atualizaPrimeiroNome()">Atualizar</button>
+  </mat-grid-tile>
 
-<mat-form-field>
-  <input matInput type="email" [disabled]="emailDisabled.isDisable" class="form-control" placeholder="Enter email" value="" [(ngModel)]="email">
-</mat-form-field>
-<button mat-icon-button (click)="enableEmail()"><mat-icon>{{emailDisabled.icon}}</mat-icon></button>
-<button mat-raised-button color="primary" [disabled]="emailDisabled.isDisable" (click)="atualizaEmail()">Atualizar</button>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput type="text" [disabled]="ultimoNomeDisabled.isDisable" class="form-control"  placeholder="Ultimo Nome" value="" [(ngModel)]="ultimoNome">
+    </mat-form-field>
+    <button mat-icon-button (click)="enableUltimoNome()"><mat-icon>{{ultimoNomeDisabled.icon}}</mat-icon></button>
+    <button mat-raised-button color="primary" [disabled]="ultimoNomeDisabled.isDisable" (click)="atualizaUltimoNome()">Atualizar</button>
+  </mat-grid-tile>
 
-<mat-form-field>
-  <input matInput type="text" [disabled]="usernameDisabled.isDisable" class="form-control"  placeholder="Username"  value="" [(ngModel)]="username">
-</mat-form-field>
-<button mat-icon-button (click)="enableUsername()"><mat-icon>{{usernameDisabled.icon}}</mat-icon></button>
-<button mat-raised-button color="primary" [disabled]="usernameDisabled.isDisable" (click)="atualizaUsername()">Atualizar</button>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput type="email" [disabled]="emailDisabled.isDisable" class="form-control" placeholder="Enter email" value="" [(ngModel)]="email">
+    </mat-form-field>
+    <button mat-icon-button (click)="enableEmail()"><mat-icon>{{emailDisabled.icon}}</mat-icon></button>
+    <button mat-raised-button color="primary" [disabled]="emailDisabled.isDisable" (click)="atualizaEmail()">Atualizar</button>
+  </mat-grid-tile>
 
-<mat-form-field>
-  <input matInput type="password" [disabled]="senhaDisabled.isDisable" class="form-control"  placeholder="Password" value="" [(ngModel)]="senha">
-</mat-form-field>
-<button mat-icon-button (click)="enableSenha()"><mat-icon>{{senhaDisabled.icon}}</mat-icon></button>
-<button mat-raised-button color="primary" [disabled]="senhaDisabled.isDisable" (click)="atualizaSenha()">Atualizar</button>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput type="text" [disabled]="usernameDisabled.isDisable" class="form-control"  placeholder="Username"  value="" [(ngModel)]="username">
+    </mat-form-field>
+    <button mat-icon-button (click)="enableUsername()"><mat-icon>{{usernameDisabled.icon}}</mat-icon></button>
+    <button mat-raised-button color="primary" [disabled]="usernameDisabled.isDisable" (click)="atualizaUsername()">Atualizar</button>
+  </mat-grid-tile>
+
+
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput type="password" [disabled]="senhaDisabled.isDisable" class="form-control"  placeholder="Password" value="" [(ngModel)]="senha">
+    </mat-form-field>
+    <button mat-icon-button (click)="enableSenha()"><mat-icon>{{senhaDisabled.icon}}</mat-icon></button>
+    <button mat-raised-button color="primary" [disabled]="senhaDisabled.isDisable" (click)="atualizaSenha()">Atualizar</button>
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+
+
+
+
+
+
+
+
+
+
 </ion-content>

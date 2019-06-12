@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 
 export interface DialogData {
@@ -20,10 +21,15 @@ export interface DialogData {
   styleUrls: ['./licoes.page.scss'],
 })
 export class LicoesPage implements OnInit{
+  location: Location;
+
   constructor(private alunoService: AlunoService,
               private route: ActivatedRoute,
               private router: Router,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog,
+              location: Location) {
+                this.location = location;
+              }
 
    @ViewChild('video') matVideo: any;
 
@@ -61,6 +67,9 @@ export class LicoesPage implements OnInit{
 
     this.results = this.alunoService.adicionaxp({valor: 100});
     this.results.subscribe( res => {
+      var login = this.alunoService.getLogin();
+      login.user.xp += 100;
+      this.alunoService.setLogin(login);
       console.log(res);
     })
 
@@ -81,6 +90,11 @@ export class LicoesPage implements OnInit{
       console.log('The dialog was closed');
       this.animal = result;
     });
+  }
+
+
+  voltar(): void {
+    this.location.go('/t')
   }
 }
 

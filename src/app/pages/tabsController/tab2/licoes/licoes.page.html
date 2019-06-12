@@ -27,7 +27,8 @@
       <p> {{licao.descricao}}   </p>
     </mat-card-content>
     <mat-card-actions>
-      <button routerLink="/t/tabs" mat-raised-button>Volta</button>
+      <button routerLink="/t/tabs/tab2" mat-raised-button>Volta</button>
+      <button color="primary" mat-raised-button (click)="openDialogXp()" >XP</button>
       <button color="primary" mat-raised-button (click)="openDialog()" >Desafio!</button>
     </mat-card-actions>
   </mat-card>
