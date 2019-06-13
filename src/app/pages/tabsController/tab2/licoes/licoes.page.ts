@@ -117,7 +117,12 @@ export class Dialog {
         private alunoService: AlunoService,) {}
 
   fotoDesafioPost:any;
-  teste:any;
+  results: Observable<any>;
+  enviado:boolean = false;
+  loading:boolean = false;
+  erro:boolean = false;
+  fotoTirada:boolean = false;
+  desafio:any;
   fotoDesafioView:any;
 
   dataURLtoFile(dataurl, filename) {
@@ -130,18 +135,46 @@ export class Dialog {
     return new File([u8arr], filename, {type:mime});
   }
 
+  sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
+
+  consoleFlag(){
+    console.log(this.loading, this.enviado);
+  }
+
+  enviadoSucesso(){
+    this.loading = false;
+    var posicao_esperada = "urdhva hastasana"
+    if (this.desafio.nome == posicao_esperada && this.desafio.pts > 0.89){
+      this.enviado = true;
+      this.results = this.alunoService.adicionaxp({valor: 100});
+      this.results.subscribe( res => {
+        var login = this.alunoService.getLogin();
+        login.user.xp += 100;
+        this.alunoService.setLogin(login);
+        console.log(res);
+      })
+    }else{
+      this.enviado = false;
+      this.fotoTirada = false;
+      this.erro = true;
+    }
+  }
+
   submit(){
+    this.loading = true;
     var file = this.dataURLtoFile(this.fotoDesafioView, 'image.jpeg');
     const formData = new FormData();
     formData.append('theFile', file);
-
     this.alunoService.submit(formData).subscribe( result =>{
-      this.teste = result.message[0].nome;
+      this.desafio = result.message[0];
+      this.enviadoSucesso();
     });
   }
 
   tirarFoto() {
-
+    this.fotoTirada = true
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,

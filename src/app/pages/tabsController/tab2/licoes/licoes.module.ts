@@ -8,7 +8,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -34,6 +34,7 @@ const routes: Routes = [
     IonicModule,
     MatGridListModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     RouterModule.forChild(routes)
   ],
   declarations: [LicoesPage, Dialog, DialogXp],
