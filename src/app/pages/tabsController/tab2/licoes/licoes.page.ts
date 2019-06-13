@@ -113,10 +113,32 @@ export class Dialog {
   constructor(
   public dialogRef: MatDialogRef<Dialog>,
   @Inject(MAT_DIALOG_DATA) public data: DialogData,
-          private camera: Camera) {}
+          private camera: Camera,
+        private alunoService: AlunoService,) {}
 
   fotoDesafioPost:any;
+  teste:any;
   fotoDesafioView:any;
+
+  dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(',');
+    var mime = arr[0].match(/:(.*?);/)[1];
+    var bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
+  }
+
+  submit(){
+    var file = this.dataURLtoFile(this.fotoDesafioView, 'image.jpeg');
+    const formData = new FormData();
+    formData.append('theFile', file);
+
+    this.alunoService.submit(formData).subscribe( result =>{
+      this.teste = result.message[0].nome;
+    });
+  }
 
   tirarFoto() {
 

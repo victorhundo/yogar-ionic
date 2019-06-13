@@ -76,6 +76,9 @@ export class AlunoService {
       return licoes;
   }
 
+  public submit(post: FormData): Observable<any> {
+    return this.http.post<any>(`${API}/desafio`, post);
+  }
 
 
 }
