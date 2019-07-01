@@ -57,6 +57,12 @@ export class LicoesPage implements OnInit{
 
     this.video = this.matVideo.getVideoTag();
     this.video.addEventListener('ended', () => this.openDialogXp());
+    console.log(this.licao.desafio)
+  }
+
+
+  hasDesafio(){
+    return this.licao.desafio != 'null' && this.licao.desafio != 'Sem desafio'
   }
 
   openDialogXp(): void {
@@ -83,7 +89,7 @@ export class LicoesPage implements OnInit{
   openDialog(): void {
     const dialogRef = this.dialog.open(Dialog, {
       width: '95%',
-      data: {name: this.name, animal: this.animal}
+      data: this.licao
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -112,7 +118,7 @@ export class Dialog {
 
   constructor(
   public dialogRef: MatDialogRef<Dialog>,
-  @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  @Inject(MAT_DIALOG_DATA) public data: any,
           private camera: Camera,
         private alunoService: AlunoService,) {}
 
@@ -124,6 +130,7 @@ export class Dialog {
   fotoTirada:boolean = false;
   desafio:any;
   fotoDesafioView:any;
+  posicao_esperada:any = this.data.desafio;
 
   dataURLtoFile(dataurl, filename) {
     var arr = dataurl.split(',');
@@ -145,8 +152,7 @@ export class Dialog {
 
   enviadoSucesso(){
     this.loading = false;
-    var posicao_esperada = "urdhva hastasana"
-    if (this.desafio.nome == posicao_esperada && this.desafio.pts > 0.89){
+    if (this.desafio.nome == this.posicao_esperada && this.desafio.pts > 0.89){
       this.enviado = true;
       this.results = this.alunoService.adicionaxp({valor: 100});
       this.results.subscribe( res => {
@@ -212,7 +218,7 @@ export class DialogXp {
 
   constructor(
     public dialogRef: MatDialogRef<DialogXp>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   onNoClick(): void {
     this.dialogRef.close();

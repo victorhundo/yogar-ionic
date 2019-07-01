@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 
@@ -27,6 +28,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatListModule,
     MatDividerModule,
     MatBadgeModule,
+    MatChipsModule,
     RouterModule.forChild([{ path: '', component: Tab2Page }])
   ],
   declarations: [Tab2Page]
