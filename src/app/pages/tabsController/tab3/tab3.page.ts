@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap, Event, NavigationEnd } from '@angular/router';
 import { AlunoService } from './../../../services/aluno.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-tab3',
@@ -22,7 +23,9 @@ export class Tab3Page implements OnInit {
   uuid: string;
   xp: number;
 
-  constructor(private alunoService: AlunoService, private router: Router) {
+  constructor(private alunoService: AlunoService,
+    private router: Router,
+    public dialog: MatDialog) {
     router.events.subscribe((val:Event) => {
       if(val instanceof NavigationEnd ){
         if (val.url == "/t/tabs/tab3"){
@@ -50,7 +53,17 @@ export class Tab3Page implements OnInit {
     this.senhaDisabled = {isDisable: true, icon: 'lock_close'};
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(Dialog, {
+      width: '95%',
+      data: 'asdsad'
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
 
   tiles: { text: string, cols: number, rows: number, color: string }[] = [
     {text: 'One', cols: 1, rows: 1, color: 'lightblue'},
@@ -128,6 +141,23 @@ export class Tab3Page implements OnInit {
 
   enableSenha(){
     this.enable(this.senhaDisabled);
+  }
+
+}
+
+@Component({
+  selector: 'dialog-upgrade',
+  templateUrl: 'dialog.html',
+  styleUrls: ['./tab3.page.scss'],
+})
+export class Dialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<Dialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

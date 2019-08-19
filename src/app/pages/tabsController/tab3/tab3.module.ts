@@ -13,6 +13,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+
+import { Dialog } from './tab3.page';
+
 
 @NgModule({
   imports: [
@@ -28,8 +32,10 @@ import {MatIconModule} from '@angular/material/icon';
     MatGridListModule,
     MatCardModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
-  declarations: [Tab3Page]
+  declarations: [Tab3Page, Dialog],
+  entryComponents: [Dialog],
 })
 export class Tab3PageModule {}

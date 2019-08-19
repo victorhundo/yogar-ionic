@@ -1,1 +1,23 @@
+.user-box {
+  width: 80%;
+  height: 180px;
 
+  position:absolute; /*it can be fixed too*/
+  left:0; right:0;
+  top:0; bottom:0;
+  margin:auto;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.input > * {
+  width: 80%;
+}
+
+// .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+//     padding-bottom: 0px;
+//     padding: 0px;
+// }
