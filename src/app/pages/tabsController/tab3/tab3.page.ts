@@ -22,8 +22,6 @@ export class Tab3Page implements OnInit {
       icon: string,
       name: string,
       isDisable: boolean,
-      atualiza: () => any,
-      enableField: () => any,
     }[];
 
   constructor(private alunoService: AlunoService,
@@ -42,11 +40,11 @@ export class Tab3Page implements OnInit {
   ngOnInit() {
     var user = JSON.parse(localStorage.getItem('login')).user
     this.fields = [
-      {field: 'primeiroNome', value: user.primeiroNome, icon: 'lock', name: 'Primeiro Nome', isDisable: true, atualiza: this.atualizaPrimeiroNome, enableField: this.enablePrimeiroNome},
-      {field: 'ultimoNome', value: user.ultimoNome, icon: 'lock', name: 'Ultimo Nome', isDisable: true, atualiza: this.atualizaUltimoNome, enableField: this.enableUltimoNome},
-      {field: 'email', value: user.email, icon: 'lock', name: 'Email', isDisable: true, atualiza: this.atualizaEmail, enableField: this.enableEmail},
-      {field: 'username', value: user.username, icon: 'lock', name: 'Username', isDisable: true, atualiza: this.atualizaUsername, enableField: this.enableUsername},
-      {field: 'senha', value: user.senha, icon: 'lock', name: 'Senha', isDisable: true, atualiza: this.atualizaSenha, enableField: this.enableSenha},
+      {field: 'primeiroNome', value: user.primeiroNome, icon: 'lock', name: 'Primeiro Nome', isDisable: true},
+      {field: 'ultimoNome', value: user.ultimoNome, icon: 'lock', name: 'Ultimo Nome', isDisable: true},
+      {field: 'email', value: user.email, icon: 'lock', name: 'Email', isDisable: true},
+      {field: 'username', value: user.username, icon: 'lock', name: 'Username', isDisable: true},
+      {field: 'senha', value: user.senha, icon: 'lock', name: 'Senha', isDisable: true},
     ]
 
     this.user = user;
