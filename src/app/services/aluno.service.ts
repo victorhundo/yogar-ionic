@@ -42,6 +42,12 @@ export class AlunoService {
     return this.http.post(`${API}/alunos/${uuid}/xp`, xp);
   }
 
+  upgrade(): Observable<any> {
+    var uuid = this.getUuid();
+    console.log(`${API}/alunos/${uuid}/upgrade`)
+    return this.http.post(`${API}/alunos/${uuid}/upgrade`, null);
+  }
+
 
 
   public getToken(): any {

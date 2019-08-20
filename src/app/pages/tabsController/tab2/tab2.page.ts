@@ -42,6 +42,13 @@ export class Tab2Page implements OnInit{
     else if (this.aluno.xp >= (licao.nivel * 100)){
       isDisable = false;
     }
+    else if (licao.ehPremium && this.aluno.ehPremium){
+      isDisable = false;
+    }
+
+    console.log(licao.ehPremium)
+
+
     return isDisable;
   }
 

@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap, Event, NavigationEnd } from '@angular/router';
 import { AlunoService } from './../../../services/aluno.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-tab3',
@@ -10,18 +12,19 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 export class Tab3Page implements OnInit {
   results: any;
-  primeiroNome: string;
-  primeiroNomeDisabled: object;
-  ultimoNome: string;
-  ultimoNomeDisabled: object;
-  email: string;
-  emailDisabled: object;
-  username: string;
-  usernameDisabled: object;
-  senha: string;
-  senhaDisabled: object;
+  user: any
   uuid: string;
   xp: number;
+
+  fields: {
+      field: string,
+      value: string,
+      icon: string,
+      name: string,
+      isDisable: boolean,
+      atualiza: () => any,
+      enableField: () => any,
+    }[];
 
   constructor(private alunoService: AlunoService,
     private router: Router,
@@ -38,42 +41,32 @@ export class Tab3Page implements OnInit {
 
   ngOnInit() {
     var user = JSON.parse(localStorage.getItem('login')).user
+    this.fields = [
+      {field: 'primeiroNome', value: user.primeiroNome, icon: 'lock', name: 'Primeiro Nome', isDisable: true, atualiza: this.atualizaPrimeiroNome, enableField: this.enablePrimeiroNome},
+      {field: 'ultimoNome', value: user.ultimoNome, icon: 'lock', name: 'Ultimo Nome', isDisable: true, atualiza: this.atualizaUltimoNome, enableField: this.enableUltimoNome},
+      {field: 'email', value: user.email, icon: 'lock', name: 'Email', isDisable: true, atualiza: this.atualizaEmail, enableField: this.enableEmail},
+      {field: 'username', value: user.username, icon: 'lock', name: 'Username', isDisable: true, atualiza: this.atualizaUsername, enableField: this.enableUsername},
+      {field: 'senha', value: user.senha, icon: 'lock', name: 'Senha', isDisable: true, atualiza: this.atualizaSenha, enableField: this.enableSenha},
+    ]
+
+    this.user = user;
     this.xp = (user.xp/100);
     if (this.xp == 0) this.xp = 1;
     this.uuid = user.uuid;
-    this.primeiroNome = user.primeiroNome;
-    this.primeiroNomeDisabled = {isDisable: true, icon: 'lock_close'};
-    this.ultimoNome = user.ultimoNome;
-    this.ultimoNomeDisabled = {isDisable: true, icon: 'lock_close'};
-    this.email = user.email;
-    this.emailDisabled = {isDisable: true, icon: 'lock_close'};
-    this.username = user.username;
-    this.usernameDisabled = {isDisable: true, icon: 'lock_close'};
-    this.senha = user.senha;
-    this.senhaDisabled = {isDisable: true, icon: 'lock_close'};
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(Dialog, {
-      width: '95%',
-      data: 'asdsad'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
+  enableField(obj) {
+    obj.isDisable = ! obj.isDisable;
+    if (obj.isDisable){
+      obj.icon = 'lock';
+    }else{
+      obj.icon = 'lock_open';
+    }
   }
 
-  tiles: { text: string, cols: number, rows: number, color: string }[] = [
-    {text: 'One', cols: 1, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 6, rows: 1, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-  ];
-
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['/logar'])
+  atualizaField(obj){
+    var atualiza = {campo: obj.field, valor: obj.value};
+    this.atualizar(atualiza, obj.name);
   }
 
   atualizar(obj, campo){
@@ -84,63 +77,24 @@ export class Tab3Page implements OnInit {
     })
   }
 
-  enable(obj){
-    obj.isDisable = !obj.isDisable
-    if (obj.isDisable){
-      obj.icon = 'lock_close';
-    }else{
-      obj.icon = 'lock_open';
-    }
+  ehPremium(){
+    return this.user.ehPremium;
   }
 
-  atualizaPrimeiroNome() {
-    this.enablePrimeiroNome();
-    var atualiza = {campo: 'primeiroNome', valor: this.primeiroNome};
-    this.atualizar(atualiza, 'Primeiro Nome');
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/logar'])
   }
 
-  enablePrimeiroNome(){
-    this.enable(this.primeiroNomeDisabled);
-  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(Dialog, {
+      width: '95%',
+      data: 'asdsad'
+    });
 
-  atualizaUltimoNome() {
-    this.enableUltimoNome();
-    var atualiza = {campo: 'ultimoNome', valor: this.ultimoNome};
-    this.atualizar(atualiza, 'Último Nome');
-  }
-
-  enableUltimoNome(){
-    this.enable(this.ultimoNomeDisabled);
-  }
-
-  atualizaEmail() {
-    this.enableEmail()
-    var atualiza = {campo: 'email', valor: this.email};
-    this.atualizar(atualiza, 'Email');
-  }
-
-  enableEmail(){
-    this.enable(this.emailDisabled);
-  }
-
-  atualizaUsername() {
-    this.enableUsername();
-    var atualiza = {campo: 'username', valor: this.username};
-    this.atualizar(atualiza, 'Username');
-  }
-
-  enableUsername(){
-    this.enable(this.usernameDisabled);
-  }
-
-  atualizaSenha() {
-    this.enableSenha();
-    var atualiza = {campo: 'senha', valor: this.senha};
-    this.atualizar(atualiza, 'Senha');
-  }
-
-  enableSenha(){
-    this.enable(this.senhaDisabled);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
@@ -151,10 +105,23 @@ export class Tab3Page implements OnInit {
   styleUrls: ['./tab3.page.scss'],
 })
 export class Dialog {
+  results: Observable<any>;
 
   constructor(
     public dialogRef: MatDialogRef<Dialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private alunoService: AlunoService,) {}
+
+  fazerUpgrade(){
+    this.results = this.alunoService.upgrade();
+    this.results.subscribe( res => {
+      var login = this.alunoService.getLogin();
+      login.user.ehPremium += true;
+      this.alunoService.setLogin(login);
+      console.log(res);
+      this.dialogRef.close();
+    })
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

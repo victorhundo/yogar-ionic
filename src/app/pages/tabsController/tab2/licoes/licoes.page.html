@@ -22,13 +22,12 @@
           <track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">
       </mat-video>
 
-      <h1>Descrição</h1>
-      <h4>xp {{currentTime1}} ??</h4>
+      <h4>Descrição</h4>
       <p> {{licao.descricao}}   </p>
     </mat-card-content>
     <mat-card-actions>
-      <button routerLink="/t/tabs/tab2" mat-raised-button>Volta</button>
       <button *ngIf="hasDesafio()"color="primary" mat-raised-button (click)="openDialog()" >Desafio!</button>
+      <button *ngIf="ehPremium()" color="primary" mat-raised-button (click)="openDialogChat()" >Fale com o Professor</button>
     </mat-card-actions>
   </mat-card>
 </ion-content>

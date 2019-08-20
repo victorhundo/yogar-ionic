@@ -42,11 +42,12 @@ export class LicoesPage implements OnInit{
   animal: string;
   name: string;
   video: HTMLVideoElement;
-
+  user: any;
 
 
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('login')).user
     this.id = this.route.snapshot.paramMap.get('id');
     this.licoes = this.alunoService.getLicoesStorage();
     this.licoes = this.licoes.filter((licao) => {
@@ -60,6 +61,9 @@ export class LicoesPage implements OnInit{
     console.log(this.licao.desafio)
   }
 
+  ehPremium(){
+    return this.user.ehPremium;
+  }
 
   hasDesafio(){
     return this.licao.desafio != 'null' && this.licao.desafio != 'Sem desafio'
@@ -88,6 +92,19 @@ export class LicoesPage implements OnInit{
 
   openDialog(): void {
     const dialogRef = this.dialog.open(Dialog, {
+      width: '95%',
+      data: this.licao
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+
+  openDialogChat(): void {
+    const dialogRef = this.dialog.open(DialogChat, {
       width: '95%',
       data: this.licao
     });
@@ -222,6 +239,28 @@ export class DialogXp {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+}
+
+
+@Component({
+  selector: 'dialog-chat',
+  templateUrl: 'dialog-chat.html',
+  styleUrls: ['./licoes.page.scss'],
+})
+export class DialogChat {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogChat>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  desabilita(){
+    return false;
   }
 
 }

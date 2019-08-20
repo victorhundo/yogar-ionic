@@ -15,6 +15,7 @@ import { IonicModule } from '@ionic/angular';
 import { LicoesPage } from './licoes.page';
 import { Dialog } from './licoes.page';
 import { DialogXp } from './licoes.page';
+import { DialogChat } from './licoes.page';
 
 const routes: Routes = [
   {
@@ -37,8 +38,8 @@ const routes: Routes = [
     MatProgressSpinnerModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LicoesPage, Dialog, DialogXp],
-  entryComponents: [Dialog, DialogXp],
+  declarations: [LicoesPage, Dialog, DialogXp,DialogChat],
+  entryComponents: [Dialog, DialogXp,DialogChat],
 })
 export class LicoesPageModule {
 }
