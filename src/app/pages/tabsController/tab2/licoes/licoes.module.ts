@@ -10,6 +10,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
+
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+
 import { IonicModule } from '@ionic/angular';
 
 import { LicoesPage } from './licoes.page';
@@ -36,6 +40,8 @@ const routes: Routes = [
     MatGridListModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatListModule,
+    MatIconModule,
     RouterModule.forChild(routes)
   ],
   declarations: [LicoesPage, Dialog, DialogXp,DialogChat],

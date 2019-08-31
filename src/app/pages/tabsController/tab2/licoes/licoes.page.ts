@@ -1,5 +1,6 @@
 import { Component ,OnInit, Inject, ViewChild} from '@angular/core';
 import { AlunoService } from '../../../../services/aluno.service';
+import { ChatService } from '../../../../services/chat.service';
 import { Observable } from 'rxjs';
 import { API } from 'src/app/API';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -251,12 +252,34 @@ export class DialogXp {
 })
 export class DialogChat {
 
+
+
   constructor(
     public dialogRef: MatDialogRef<DialogChat>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
+    private chatService: ChatService,
+    private alunoService: AlunoService,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+
+      this.chatService.getMessage(this.msgs)
+    }
+
+  @ViewChild('scrollMe') myScrollContainer: any;
+  msgs:string[] = [];
+
+  msg:object = {
+    licao: this.data,
+    aluno: this.alunoService.getLogin().user
+  }
+
+  chatInput: string;
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  sendButtonClick(el: HTMLElement) {
+    //console.log(this.msg)
+    this.chatService.sendMessage(this.chatInput);
   }
 
   desabilita(){

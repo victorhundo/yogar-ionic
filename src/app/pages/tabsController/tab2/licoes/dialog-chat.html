@@ -1,3 +1,14 @@
-<textarea matInput [disabled]="desabilita()" placeholder="Leave a comment" rows="4" cols="50" isDisable="true" style="width:100%"></textarea> <br/>
-<input matInput placeholder="Digite algo..">
-<button color="primary" mat-raised-button>Enviar</button>
+<mat-dialog-content class="my-chat" #scrollMe>
+<mat-nav-list>  <h3 mat-subheader>Mensagens</h3>
+  <mat-list-item *ngFor="let m of msgs">
+    <mat-icon mat-list-icon>account_box</mat-icon>
+    <h4 mat-line>USER</h4>
+    <p mat-line> {{m}} </p>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-nav-list>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <input matInput placeholder="Digite algo.." [(ngModel)]="chatInput">
+  <button color="primary" mat-raised-button (click)="sendButtonClick(scrollMe)">Enviar</button>
+</mat-dialog-actions>
