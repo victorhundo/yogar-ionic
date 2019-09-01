@@ -280,6 +280,7 @@ export class DialogChat {
   sendButtonClick(el: HTMLElement) {
     //console.log(this.msg)
     this.chatService.sendMessage(this.chatInput);
+    this.chatInput = "";
   }
 
   desabilita(){

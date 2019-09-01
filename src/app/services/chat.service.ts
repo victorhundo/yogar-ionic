@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as io from 'socket.io-client';
+import { API } from 'src/app/API';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +12,11 @@ export class ChatService {
   private socket: any;
 
   constructor() {
-    this.socket = io("http://127.0.0.1:3000");
+    this.socket = io(`${API}`);
   }
 
   // EMITTER
-  sendMessage(msg: object) {
+  sendMessage(msg: any) {
     this.socket.emit('sendMessage', msg);
   }
 
