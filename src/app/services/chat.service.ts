@@ -15,6 +15,10 @@ export class ChatService {
     this.socket = io(`${API}`);
   }
 
+  joinRoom(conversation_id: string){
+    this.socket.emit('subscribe', conversation_id);
+  }
+
   // EMITTER
   sendMessage(msg: any) {
     this.socket.emit('sendMessage', msg);

@@ -259,12 +259,19 @@ export class DialogChat {
     private chatService: ChatService,
     private alunoService: AlunoService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-
+      this.uuidAluno = JSON.parse(localStorage.getItem('login'))["user"]["uuid"];
+      this.uuidProfessor = data.uuidProfessor;
+      this.room = `${data.id}+${this.uuidProfessor}+${this.uuidAluno}`
+      console.log(this.room);
+      this.chatService.joinRoom(this.room)
       this.chatService.getMessage(this.msgs)
     }
 
   @ViewChild('scrollMe') myScrollContainer: any;
   msgs:string[] = [];
+  room:string;
+  uuidAluno:string;
+  uuidProfessor:string;
 
   msg:object = {
     licao: this.data,
@@ -279,7 +286,16 @@ export class DialogChat {
 
   sendButtonClick(el: HTMLElement) {
     //console.log(this.msg)
-    this.chatService.sendMessage(this.chatInput);
+    var now: Date = new Date();
+    var msg = {
+      room: this.room,
+      licao: this.data.id,
+      professor: this.data.uuidProfessor,
+      aluno: this.uuidAluno,
+      date: now,
+      msg: this.chatInput,
+    }
+    this.chatService.sendMessage(msg);
     this.chatInput = "";
   }
 
