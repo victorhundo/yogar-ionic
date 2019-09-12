@@ -263,15 +263,21 @@ export class DialogChat {
       this.uuidProfessor = data.uuidProfessor;
       this.room = `${data.id}+${this.uuidProfessor}+${this.uuidAluno}`
       console.log(this.room);
+      console.log(data)
       this.chatService.joinRoom(this.room)
-      this.chatService.getMessage(this.msgs)
+      var results:Observable = this.chatService.getMessageSave(this.room);
+      results.subscribe( res => {
+        this.msgs = res;
+        this.chatService.getMessage(this.msgs)
+      })
     }
 
   @ViewChild('scrollMe') myScrollContainer: any;
-  msgs:string[] = [];
+  msgs:any[] = [];
   room:string;
   uuidAluno:string;
   uuidProfessor:string;
+  alunoNome: string = JSON.parse(localStorage.getItem('login'))["user"]["primeiroNome"];
 
   msg:object = {
     licao: this.data,
@@ -294,6 +300,8 @@ export class DialogChat {
       aluno: this.uuidAluno,
       date: now,
       msg: this.chatInput,
+      remetente: 'aluno',
+      alunoNome: this.alunoNome
     }
     this.chatService.sendMessage(msg);
     this.chatInput = "";

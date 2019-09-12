@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as io from 'socket.io-client';
 import { API } from 'src/app/API';
+import { HttpClient } from '@angular/common/http';
+
 
 
 @Injectable({
@@ -11,7 +13,7 @@ export class ChatService {
   // private socket: SocketIOClient.Socket;
   private socket: any;
 
-  constructor() {
+  constructor(private http:HttpClient) {
     this.socket = io(`${API}`);
   }
 
@@ -24,9 +26,13 @@ export class ChatService {
     this.socket.emit('sendMessage', msg);
   }
 
-  getMessage(msgs: string[]){
+  getMessage(msgs: any[]){
     this.socket.on('sendMessage', (data) =>{
       msgs.push(data);
     })
+  }
+
+  getMessageSave(id): Observable<any> {
+	  return this.http.get(`${API}/chat/${id}`);
   }
 }
