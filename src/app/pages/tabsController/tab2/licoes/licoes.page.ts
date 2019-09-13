@@ -265,11 +265,12 @@ export class DialogChat {
       console.log(this.room);
       console.log(data)
       this.chatService.joinRoom(this.room)
-      var results:Observable = this.chatService.getMessageSave(this.room);
+      var results:Observable<any> = this.chatService.getMessageSave(this.room);
       results.subscribe( res => {
         this.msgs = res;
         this.chatService.getMessage(this.msgs)
       })
+      console.log(data)
     }
 
   @ViewChild('scrollMe') myScrollContainer: any;
@@ -301,7 +302,8 @@ export class DialogChat {
       date: now,
       msg: this.chatInput,
       remetente: 'aluno',
-      alunoNome: this.alunoNome
+      alunoNome: this.alunoNome,
+      licaoTitulo: this.data.titulo
     }
     this.chatService.sendMessage(msg);
     this.chatInput = "";
