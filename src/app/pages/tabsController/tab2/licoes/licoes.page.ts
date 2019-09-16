@@ -1,4 +1,4 @@
-import { Component ,OnInit, Inject, ViewChild} from '@angular/core';
+import { Component ,OnInit, Inject, ViewChild, AfterViewChecked, ElementRef} from '@angular/core';
 import { AlunoService } from '../../../../services/aluno.service';
 import { ChatService } from '../../../../services/chat.service';
 import { Observable } from 'rxjs';
@@ -250,8 +250,9 @@ export class DialogXp {
   templateUrl: 'dialog-chat.html',
   styleUrls: ['./licoes.page.scss'],
 })
-export class DialogChat {
+export class DialogChat implements OnInit{
 
+  @ViewChild('scrollMe', {read: ElementRef}) myScrollContainer: ElementRef;
 
 
   constructor(
@@ -269,11 +270,15 @@ export class DialogChat {
       results.subscribe( res => {
         this.msgs = res;
         this.chatService.getMessage(this.msgs)
+        // this.scrollToBottom();
+        setTimeout(() => {  this.scrollToBottom(); console.log('baixa')},10)
       })
       console.log(data)
     }
 
-  @ViewChild('scrollMe') myScrollContainer: any;
+  ngOnInit() {
+
+    }
   msgs:any[] = [];
   room:string;
   uuidAluno:string;
@@ -290,6 +295,12 @@ export class DialogChat {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  scrollToBottom(): void {
+        try {
+            this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+        } catch(err) { console.log(err)}
+    }
 
   sendButtonClick(el: HTMLElement) {
     //console.log(this.msg)
