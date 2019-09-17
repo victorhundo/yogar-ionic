@@ -8,6 +8,7 @@
 
 
 <ion-content>
+
   <mat-card class="example-card" *ngFor="let licao of licoes" style="margin: 10px">
     <button mat-raised-button
     color="primary"
@@ -15,12 +16,12 @@
     style="width : 100%;"
     [routerLink]="['/licoes', licao.id]"
     [disabled]="checkXp(licao)">
-
     {{licao.titulo}}
   </button>
   <mat-chip-list aria-label="Fish selection" >
     <mat-chip color="primary" selected style="margin-top: 10px">{{licao.tag}}</mat-chip>
     <mat-chip color="accent" selected style="margin-top: 10px">Nvl. {{licao.nivel}}</mat-chip>
+    <mat-chip *ngIf="licao.ehPremium == true"color="warn" selected style="margin-top: 10px">Premium</mat-chip>
   </mat-chip-list>
 
 </mat-card>
