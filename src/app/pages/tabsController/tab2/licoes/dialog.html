@@ -7,10 +7,11 @@
   <p>{{fotoDesafioView}}</p>
   <p align="center"><img src="{{fotoDesafioView}}"></p>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Fechar</button>
- <button mat-button mat-raised-button color="primary"(click)="tirarFoto()">Tirar Foto</button>
- <button mat-button [disabled]="!fotoTirada" mat-raised-button color="primary"(click)="submit()">Enviar</button>
+<mat-dialog-actions >
+    <button mat-raised-button  selected style="min-width:220px;margin: 5px" color="primary" [disabled]="!fotoTirada" mat-raised-button color="primary"(click)="submit()">Enviar</button>
+    <button mat-raised-button  selected style="min-width:100px;margin: 5px" color="primary"(click)="tirarFoto()">Tirar Foto</button>
+    <button mat-raised-button  selected style="min-width:105px;margin: 10px"(click)="onNoClick()">Fechar</button>
+
 </mat-dialog-actions>
 </div>
 <div *ngIf="loading" align='center'>
