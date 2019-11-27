@@ -10,7 +10,7 @@
 
   <mat-grid-list cols="8" rowHeight="1:1">
     <mat-grid-tile [colspan]="6" >
-      <p> Olá, {{primeiroNome}} {{ultimoNome}} </p>
+      <p> Olá, {{user.primeiroNome}} {{user.ultimoNome}} </p>
     </mat-grid-tile>
   <mat-grid-tile [colspan]="2" >
     <button mat-raised-button  color="primary" (click)="logout()">Logout</button>

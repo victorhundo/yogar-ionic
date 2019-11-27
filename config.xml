@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="victorhundo.yogar" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Yogar</name>
-    <description>Yogar Ionic/Cordova app.</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <description>Aulas de Yoga em português brasileiro</description>
+    <author email="vhfsfox@gmail.com" href="http://github.com/victorhundo/yogar-ionic">Victor Hugo</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
